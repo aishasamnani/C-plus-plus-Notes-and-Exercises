@@ -1,0 +1,559 @@
+// C++ Collections
+
+// A collection data type is essentially a group of varaible stored under one variable
+// More specifically, collection types group together some number of data types that have a shared significance or need to be operated on together
+// In C++ there are various collection types including: arrays, vectors, sets, and maps
+
+// ARRAYS (Fixed size)
+// Consists of an ordered collection of elements, which are essentially just values
+// Used to store multiple values in a single variable, instead of declaring a different variable for each value
+// To declare an array, first we need to define the variable name with its data type, and specify the maximum number of elements in the array using square brackets []
+// All the elements in the array should be written within curly brackets {}, with each element seperated by a comma
+
+// Example:
+// Lets say we want to create an array that consists of string elements 
+string food[4] = {"Chicken", "Pasta", "Apple", "Ice cream"}
+// The data type is set to string since the array contains four strings
+// The name of the array is food, with the number 4 in brackets beside it to represent the max number of elements in the array
+    // Note that this is simply the maximum number of elements that this array can hold, so you can have less than 4 elements
+// The elements are written within curcly brackets {}, seperated with commas
+// Similarly, you could have an array of integers:
+int nums[5] = {5, 10, 15, 20, 25}
+
+
+// Accessing elements in an array:
+// To access and print an element in an array, you use the index number of that element
+// An index number tells the program which spot or position the element is in the array
+// index numbers begin from 0 and keep going to n-1, where n is the order of an element in an array
+// Ex. an array of {5, 10, 15, 20, 25}, where 5 is the first element, so its index is 0
+// 10 is index 1, 15 is index 2, 20 is index 3, and 25 is index 4
+// So although there are 5 elements, the last element has an index value of 4
+// To access and print an element from the array, write the index number of the element in square brackets next to the array name
+// Example:
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+  string food[4] = {"Chicken", "Pasta", "Apple", "Ice cream"}; // initialize the array food with 4 string elements
+  cout << food[0]; // the index zero was accessed, so the output will be "Chicken"
+  return 0;
+}
+
+
+// Changing an element in an array:
+// To change the value of an element, refer to the index number of the element and assign it a new value
+// NOTE: You can only change the value of the elements in an array, but cannot change the size of an array after it is declard
+// Since arrays are of a fixed size, you cannot add or remove elements from them
+// Example:
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+  string food[4] = {"Chicken", "Pasta", "Apple", "Ice cream"}; // initialize the array food with 4 string elements
+  cout << food[3]; // outputs: "Ice cream"
+  food[3] = "Pizza"; // Change the value of the 4th element in the array to "Pizza"
+  cout << food[3]; // after changing the value it outputs: "Pizza"
+  return 0;
+}
+
+
+// Loops and Arrays:
+// You can print out all the elements of an array using a for-each loop 
+// Recall the syntax in a for-each loop:
+for (type variableName : arrayName) {
+  // code block to be executed
+}
+// Now using an array:
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+  string food[4] = {"Chicken", "Pasta", "Apple", "Ice cream"}; // initialize the array food with 4 string elements
+  
+  // Loop through elements 
+  for (string i : food) { // the variable 'i' is set to a string data type as the values in the array are strings
+    cout << i << "\n"; // prints each element in the array on a new line
+  }
+
+  return 0;
+}
+
+// 2-D Arrays
+// To have a 2-D, or multidimensional array, means you have an array of arrays
+// 2-D arrays are useful for programs that involve some sort of visualization of a grid or board
+// To declare a 2-D array, you follow the same syntax as a normal array, with the following changes:
+    // Add another set of square brackets for the second dimension of arrays
+    // Use curly brackets to contain each sub-array
+    // All sub-arrays are seperated by commas, with two curly brackets surrounding the entire array
+// Example:
+int numberBoard[2][3] = { // each new set of square brackets that is added represents another dimension
+                          // 2 square brackets indicates that this is a 2-D array
+    {1, 2, 3}, 
+    {4, 5, 6}
+}; // you do not need to line the arrays up as is done in this example, however it does prove helpful when visualizing grids/boards
+
+
+// Accessing and changing elements of a 2-D array is very similar to that of regular arrays:
+// Example:
+#include <iostream>
+using namespace std;
+
+int main() {
+  int numberBoard[2][3] = {
+    {1, 2, 3},
+    {4, 5, 6}
+  }; // initialize the 2-D array of numbers (2 arrays, with three elements each)
+  
+  cout << numberBoard[0][2]; // outputs 3 (Third element of the first array)
+  
+  numberBoard[1][2] = 9; // Changes the third element of the second array (6) to 9
+  cout << numberBoard[1][2]; // outputs 9 
+  
+  return 0;
+}
+
+
+// 2-D Arrays and Loops
+// To loop through a 2-D array, you need to use a nested for loop (one o loop through the sub-arrays in the array, and one to loop through the elements in each sublist)
+// Example:
+#include <iostream>
+using namespace std;
+
+int main() {
+  int numberBoard[2][3] = {
+    {1, 2, 3},
+    {4, 5, 6}
+  }; // initialize the 2-D array of numbers
+  
+  for (int i = 0; i < 2; i++) { // loop through sub-arrays in array
+    for (int j = 0; j < 3; j++) { // loop through elements in each sub-array
+      cout << numberBoard[i][j] << "\n"; // 'i' represents the index of each sub-array, while 'j' represents the index of each element in the sub-arrays
+    }
+  }
+  return 0;
+}
+// The above code outputs:
+// 1
+// 2
+// 3
+// 4
+// 5
+// 6
+
+
+// VECTORS (Dynamic size)
+// Unlike arrays, vectors are resizeable, meaning we can add or remove elements from them 
+// Similar to arrays however, vectors are used to store multiple values of the same type
+// To use vectors, we need to include the vector header file
+#include <vector>
+// To create a vector, use the vector keyword and specify the data type of the values it will store within angle brackets
+// After the angle brackets, write the name of the vector
+// All elements in the vector should be contained in curly brackets {}
+// Example:
+vector<string> fruits = {"Orange", "Strawberry", "Mango", "Banana"} 
+// Notice that we do not specify the maximum number of elements like we do in arrays, this is because vectors resizable
+// NOTE: The type of vector cannot be changed after declaring it, in this case the vector consists of only strings
+
+
+// Accessing vector elements:
+// Similar to arrays, we need to reference the index number of the vectpr element to access it
+// Write the index number within square brackets next to the vector name
+// Alternatively, we can use a function from the vector library .at()
+// Use .at() with the element index number to access that element
+// This method is preferred over using the square brackets as it gives you an error if you try to call an index that is out of range
+// For example:
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+  vector<string> fruits = {"Orange", "Strawberry", "Mango", "Banana"}; // initialize fruits vector
+  cout << fruits[2]; // outputs: "Mango" 
+                     // Remember that indexes start from 0 so 'Strawberry' would have an index of 1
+  cout << fruits.at(1); // outputs: "Strawberry"
+  return 0;
+}
+
+// The vector library is also very useful as it has functions to access certain elements in a vector
+// For example:
+// Use .front() to access the first element
+// Use .back() to access the last element
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+  vector<string> fruits = {"Orange", "Strawberry", "Mango", "Banana"}; // initialize fruits vector
+  cout << fruits.front(); // outputs: "Orange"
+  cout << fruits.back(); // outputs: "Banana"
+  return 0;
+}
+
+
+// Changing a vector element:
+// Again, we can use square brackets or the .at() function to change the element in a vector
+// For Example:
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+  vector<string> fruits = {"Orange", "Strawberry", "Mango", "Banana"}; // initialize fruits vector
+  // Using square brackets
+  fruits[2] = "Pear"; // Changes value from 'Mango' to 'Pear'
+  cout << fruits[2]; // outputs: 'Pear' 
+  // Using .at()
+  fruits.at(1) = "Lemon"; // Changes value from 'Strawberry' to 'Lemon'
+  cout << fruits.at(1); // outputs: 'Lemon'
+  return 0;
+}
+
+
+// Adding elements to a vector:
+// NOTE: we can only add/remove elements from the end of a vector
+// To add an element to a vector, use the .push_back() function, which is included in the vector library
+// Calling this function will add a specified element to the end of the vector
+// Specify the new element to add inside the brackets
+// For example:
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+  vector<string> fruits = {"Orange", "Strawberry", "Mango", "Banana"}; // initialize fruits vector
+  fruits.push_back("Apple");
+  cout << fruits.back(); // if we print the last element in the vector, it will print 'Apple', which is the element we just added
+
+  return 0;
+}
+
+
+// Removing elements from a vector:
+// To remove an element from a vector, use the .pop_back() function which is predefined in the vector library
+// Using this will remove the last element in the vector
+// For example:
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+  vector<string> fruits = {"Orange", "Strawberry", "Mango", "Banana"}; // initialize fruits vector
+  fruits.pop_back(); // Removes the last element in the vector which is 'Banana'
+  cout << fruits.back(); // if we print the last element in the vector, it will print 'Mango' since we removed 'Banana'
+
+  return 0;
+}
+
+
+// Finding vector size:
+// To find the number of elements currently in a vector, use the .size() function
+// For Example:
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+  vector<string> fruits = {"Orange", "Strawberry", "Mango", "Banana"}; // initialize fruits vector
+  cout << fruits.size(); // outputs: 4 - the number of elements in the vector currently
+
+  return 0;
+}
+
+
+// Vectors and Loops
+// To loop through, and essentially output the entire vector, use a for-each loop
+// For example:
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+  vector<string> fruits = {"Orange", "Strawberry", "Mango", "Banana"}; 
+  
+  for (string fruit : fruits) { // the variable 'fruit' is initialized with the string data type
+    cout << fruit << "\n"; // prints each fruit in the vector on a new line
+  }  
+  return 0;
+}
+
+
+// Other vector functions
+// Another useful vector function is the .empty() function 
+// Using .empty() will check if the vector is empty or not and return a corresponding boolean value 
+// If it is empty, it will return 1 (True), and 0 (False) if not
+// For example:
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+  vector<string> fruits = {"Orange", "Strawberry", "Mango", "Banana"}; 
+  cout << fruits.empty() // outputs: 0 (False, not empty)
+  
+  return 0;
+}
+
+
+// SETS
+// Sets store unique values that are sorted automatically in ascending order (for strings aphabetical, for integers numerical)
+// All values are different which means duplicate values are ignored 
+// Elements can be added or removed, however they cannot be changed
+// Cannot be accessed by index number like arrays and vectors, since the computer sorts it into acending order itself regardless of which order the set is written in
+// To use sets, you need to include the set header file:
+#include <set>
+// To create a set, use the set keyword, followed by the data type of the set elements in angle brackets
+// Atfer the brackets write the set name and write all the elements inside curly brackets, seperated by commas
+// For example:
+set<int> numbers = {100, 25, 31, 698, 12} // The set has been declared using the integer data type
+
+
+// Sets and Loops
+// To output the values in the set, use a for-each loop like was doen for arrays and vectors
+// Example:
+#include <iostream>
+#include <set>
+using namespace std;
+
+int main() {
+  set<int> numbers = {100, 25, 31, 698, 12}; // intialize the set
+
+  for (int num : numbers) { // the variable num is declared as the data type integer
+    cout << num << "\n"; // prints the elements in the set in acending numerical order
+  }
+  return 0;
+}
+// Outputs:
+// 12
+// 25
+// 31
+// 100
+// 698
+
+
+// Adding elements to a set:
+// To add elements to a set, use the .insert() function which is included in the set library
+// For example:
+#include <iostream>
+#include <set>
+using namespace std;
+
+int main() {
+  set<int> numbers = {100, 25, 31, 698, 12}; // intialize the set
+  numbers.insert(85); // inserts integer into its numerical order in the set
+  return 0;
+}
+
+
+// Removing elements from a set:
+// To remove an element in a set, use the .erase() function
+// Specify the value of the element you want to remove
+// To remove all the elements in a set use the .clear() function
+// For example:
+#include <iostream>
+#include <set>
+using namespace std;
+
+int main() {
+  set<int> numbers = {100, 25, 31, 698, 12}; // intialize the set
+  numbers.erase(698); // removes integer 698 from the set
+  numbers.clear(); // set is now empty
+  return 0;
+}
+
+
+// Finding the size of a set:
+// To find how many elements are in a set, use the .size() function
+// For example:
+#include <iostream>
+#include <set>
+using namespace std;
+
+int main() {
+  set<int> numbers = {100, 25, 31, 698, 12}; // intialize the set
+  cout << numbers.size(); // outputs: 5 - there are 5 unique elements in the set
+  return 0;
+}
+
+
+// Checking if a set is empty:
+// To determine whether a set is empty, use the .empty() function
+// The function will return a corresponding boolean value 
+// If the set is empty, it will return 1 (True), if not 0 (False)
+// For example:
+#include <iostream>
+#include <set>
+using namespace std;
+
+int main() {
+  set<int> numbers = {100, 25, 31, 698, 12}; // intialize the set
+  cout << numbers.empty(); // outputs: 0 (False, not empty)
+  return 0;
+}
+
+
+// Other ways to manipulate sets:
+// To sort a set in descending order, use the greater<> functor
+// Write the data type of the set within the angle brackets
+// For example:
+#include <iostream>
+#include <set>
+using namespace std;
+
+int main() {
+  set<int, greater<int>> numbers = {100, 25, 31, 698, 12}; // intialize the set, using the greater functor
+
+  for (int num : numbers) { // the variable num is declared as the data type integer
+    cout << num << "\n"; // prints the elements in the set in acending numerical order
+  }
+  return 0;
+}
+// output:
+// 698
+// 100
+// 31
+// 25
+// 12
+
+
+// MAPS (also known as hash tables)
+// A map stores elements in unique key/value pairs
+// Every key in a map is associated with a value
+// All keys nust be unique (no duplicates)
+// Elements (or values) in maps are accesable using keys, unlike the some of the previous collection types that use indexes
+// Maps are automatically sorted in ascending order by their keys, unlike sets which are sorted based on the elements
+// To use maps, you need to include the map header file
+#include <map>
+// To create a map, use the map keyword, and specify the data type of the key and value within angle brackets, seperated using commas
+// After the angle brackets, write the name of the set
+// The keys should be written before the value within curly brackets, seperated by commas
+// For example:
+// Lets say we want to create a map of students marks
+map<string, int> marks = {{"Maria", 92}, {"John", 83}, {"Dave", 100}}
+// The student's name will work as a key to access the value, which is their mark
+
+
+// Accessing elements in a map:
+// Elements in a map are accessed by reffering to its key within square brackets
+// Alternatively, you can access the value of an element using the .at() function
+// This is often preffered over square brackets as the function will give you and error if the element does not exist
+// For example:
+#include <iostream>
+#include <map>
+using namespace std;
+
+int main() {
+  map<string, int> marks = {{"Maria", 92}, {"John", 83}, {"Dave", 100}}; // intialize the map 'marks'
+  // Gets the value associated with the key "Maria"
+  cout << "Maria's mark is: " << marks["Maria"] << "\n"; // outputs: "Maria's mark is: 92"
+  // Gets the value associated with the key "Dave"
+  cout << "Dave's mark is: " << marks.at("Dave") << "\n"; // outputs: "Daves's mark is: 100"
+
+  return 0;
+}
+
+
+// Changing an element in a set:
+// You can change the value associated with a key in a map using square brackets
+// It is better practice to use the .at() fucntion as it give a proper error message when an element doesnt exist
+// For example:
+#include <iostream>
+#include <map>
+using namespace std;
+
+int main() {
+  map<string, int> marks = {{"Maria", 92}, {"John", 83}, {"Dave", 100}}; // intialize the map 'marks'
+  marks["Maria"] = 50; // changes the value associated with the key "Maria" to 50
+  cout << "Maria's mark is: " << marks["Maria"] << "\n"; // outputs: "Maria's mark is: 50"
+  marks.at("Dave") = 89; // changes the value associated with the key "Dave" to 89
+  cout << "Dave's mark is: " << marks.at("Dave") << "\n"; // outputs: "Daves's mark is: 89"
+
+  return 0;
+}
+
+
+// Adding elements to a map:
+// You can add elements to a map using square brackets
+// Alternatively, you can also use the .insert() function
+// For example:
+#include <iostream>
+#include <map>
+using namespace std;
+
+int main() {
+  map<string, int> marks = {{"Maria", 92}, {"John", 83}, {"Dave", 100}}; // intialize the map 'marks'
+  marks["Lyn"] = 85; // Adds Lyn's mark to the order in the map using square brackets
+  marks.insert({"Anne", 96}); // Adds Anne's mark to the order in the map using .insert()
+  return 0;
+}
+
+
+// Removing elements in a map:
+// To remove a certain element in a map, use the .erase() function
+// Write the name of the key you want to erase to erase both the key and value
+// TO erase the entire map, use the .clear() funtion
+// For example:
+#include <map>
+using namespace std;
+
+int main() {
+  map<string, int> marks = {{"Maria", 92}, {"John", 83}, {"Dave", 100}}; // intialize the map 'marks'
+  marks.erase("John"); // removes john and his mark from the map
+  marks.clear(); // clears the entire map, it is now empty
+  return 0;
+}
+
+
+// Cheack if a map is empty:
+// To check if a map is empty, use the .empty() function
+// Will return a boolean value
+// 1 (True) - Empty, 0 (False) - Not empty
+// For example:
+#include <iostream>
+#include <map>
+using namespace std;
+
+int main() {
+  map<string, int> marks = {{"Maria", 92}, {"John", 83}, {"Dave", 100}}; // intialize the map 'marks'
+  cout << marks.empty(); // outputs: 0 (False, not empty)
+  return 0;
+}
+
+
+// Checking the size of a map:
+// To determine how many elements are in a map, use the .size() function
+// For example:
+#include <iostream>
+#include <map>
+using namespace std;
+
+int main() {
+  map<string, int> marks = {{"Maria", 92}, {"John", 83}, {"Dave", 100}}; // intialize the map 'marks'
+  cout << marks.size(); // outputs: 3 - number of key/value pairs in map
+  return 0;
+}
+
+
+// Check if an element exists:
+// To check if a specific element exists, use the .count() function
+// Specify which key you want to check a value for within the brackets
+// Returns a boolean value 
+// 1 (True) - element exists, 0 (False) - element does not exist
+// For example:
+#include <iostream>
+#include <map>
+using namespace std;
+
+int main() {
+  map<string, int> marks = {{"Maria", 92}, {"John", 83}, {"Dave", 100}}; // intialize the map 'marks'
+  cout << marks.count("Tery"); // outputs: 0 (False, Element DNE)
+  return 0;
+}

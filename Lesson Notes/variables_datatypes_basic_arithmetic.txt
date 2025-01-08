@@ -1,0 +1,165 @@
+// C++ is an object-oriented programming (OOP) language that is closely related to the language C. 
+// This is why the language gives a clear structure to programs and allows code to be reused, lowering development costs.
+// Today, C++ is one of the most popular languages worldwide and is used in operating systems, Graphical User Interfaces, and embedded systems.
+
+
+// Variables & Data Types/Basic Arithmetic
+
+// COMMENTS
+// Comments are used to annotate code to explain it, or to prevent a line of code from being executed.
+// In C++, two forward slashes are used to comment a single line of code out, like how it is done for this entire cpp file
+    // Helpful Tip: Highlight the lines of code you want to comment out and select ctrl+/ to quickly comment multiple single lines.
+// To comment out a large portion of code at once, use /* and */ at the beginning and end of the comment
+
+// VARIABLES & SYNTAX
+// In all programming languages, variables are used to store data values
+// In C++, variable names are called identifiers and are names created by the programmer
+// Variables can have different types that need to be assigned so the program knows what operations can be preformed on it
+// Data Types:
+    // int - for all whole number/integer variables (#'s without a decimal, i.e. 1, 2, -7, 400)
+    // double - for numbers with decimals (floating point #'s, i.e. 20.1, 0.56092)
+    // char - for single characters, written inside single quotes '' (i.e. 'a', 'P')
+    // string - for more than one character, text written inside double quotes "" (i.e. "Hello World", "My name is Bob")
+    // bool - for boolean values (True or False)
+
+// Declaring variables in C++ requires you to follow a certain syntax
+    // Sample Structure: DataType varName = value
+    // Where DataType is the variable type (such as string, int, char), varName is name of the variable (chosen by the programmer), and value is the data that is stored within the variable
+// The following is an example of declaring, or creating a variable:
+
+#include <iostream> // This line is nessesary as it integrates the input-output stream library which allows input and output operations functionalities, like reading data from or writing data to the screen (console) or files.
+using namespace std; // Namespace is a way to group together related functions, classes, variables, and other symbols, so the "using" keyword allows you to access these symbols all at once without having to specify their namespace each time.
+// For example, later on in the code we use the keyword "cout" which stands for character output, and outputs the variable or data that follows it. If we didn't declare "using namespace std" at the beginning of the code, everytime we used "cout", we would need to write std:: infront of it. "Using namespace std" saves time by only needing to write it once. 
+
+int main(){ // It is important to note that code in C++ will not run if it is not inside a main() function. (We will learn more about what a function is later on)
+
+    int wordName = 10; // The variable wordName is assigned as an integer using the "int" keyword and holds the value 10
+    wordName = 20; // wordName now holds the value of 20, note that we dont assign "int" again as the wordName variable will always be an integer once assigned a data type
+    cout << wordName; // "cout" outputs the value associated with the wordName identifier, 20
+
+}
+
+// In the program above you must have noticed various syntax that has not been explained:
+    // ; (semi-colon) is used to end a line
+    // {...} implies a code block within the curly brackets
+    // # used to include libraries or header files that provide functionality needed by the program
+    // << used to combine text and variables
+
+
+// Displaying Variables
+// To use a variable in a scentence the << syntax is used alongside 'cout' to join vairables and strings
+// Example:
+
+#include <iostream>
+using namespace std;
+
+int main() {
+  string userName = "Bob";
+  int userAge = 12;
+  cout << "Hello " << userName << ". You are " << userAge << " years old.";
+}
+// The following program should output "Hello Bob. You are 12 years old."
+// More than one variable can also be delcared at once:
+    // Declaring variables with the same type:
+    int a = 1, b = 2, c = 3; // use a comma-sperated list
+
+    // Declaring variables with the same value:
+    int a, b, c;
+    a = b = c = 100; // use the "=" operator
+
+// When the value of a vairable is unchangable, that variable is called a constant
+// If you want to create a constant variable, use the const keyword:
+const int constNum = 100; // constNum cannot be changed
+constNum = 10;  // will result in an error
+
+
+// User Input
+// When writing programs, sometimes we want to get some sort of input from the user 
+// This can be useful for collecting information such as passwords, or other persional information depending on the program
+// Use cin, which is a predefined variable to get use input 
+// Unlike the cout variable, which outputs information, when using cin we use the extraction operator >>
+// For example:
+// Say we want to collect the users name:
+#include <iostream>
+using namespace std;
+
+int main() {
+  string userInput; // declare an empty variable, with a string data type 
+  cout << "Enter your name: "; // output line prmpts for user name
+  cin >> userInput; // collects users input and sotres it in userInput variable
+  cout << "Hello, " << userInput; // outputs user input in a scentence
+  return 0;
+}
+
+
+// Data Types Continued...
+
+// NUMBER TYPES:
+    // Integers (int):
+    // Stores all whole number/integer values (in otehr words, numbers without decimal places)
+    // Ex. 1, 500, -2, -90000
+
+    // Double (double), or float:
+    // Stores all numbers with decimal places 
+    // Ex. 10.9, -2.560043
+    // NOTE: Floats are also used to store decimal numbers, however they are less precise (6-7 decimal points) than doubles (~15 decimal points)
+    // Double is better to use when it comes to calculations
+
+// TEXT TYPES:
+    // Character (char):
+    // Stores all single characters including lower/uppercase letters, as well as ASCII characters
+    // Ex. 'q', 'R' (Letters must be inside of single quotes '')
+    // Ex. ASCII: 66(B), 67(C)
+
+    // String (string):
+    // Stores all text (longer than one character)
+    // Ex. "hello!", "(My name is, Bob.)" (Strings must be within double quotes "")
+
+// BOOLEAN TYPE:
+    // Boolean (bool):
+    // Stores two states - True or False
+    // In C++, when a boolean value is outputed, it is either 0 (False), or 1 (True)
+    bool youAreSmart = true;
+    bool dogsAreBugs = false;
+    cout << youAreSmart;  // Will output 1
+    cout << dogsAreBugs;  // Will output 0
+
+
+// C++ OPERATORS 
+// Operators are used to preform certain operations on values and variables
+// In C++ operators are used for camparisons, arithmetic, assignments, and logic
+
+// ARITHMETIC OPERATORS
+// These operators are used in C++ to preform basic mathematical calculations:
+// + addition (a + b)
+// - subtraction (a - b)
+// * multiplication (a * b)
+// / division (a / b)
+// % modulus (a % b) - returns the remainder of the division of a and b
+// ++ increment (++ a) - increases the value of a by 1
+// -- decrement (-- b) - decreases the value of b by 1
+
+// Examples:
+cout << 1+2; //outputs 3
+
+cout << 6/3; //outputs 2
+
+int man = 100;
+cout << ++man; //outputs 101
+
+
+// ASSIGNMENT OPERATORS
+// These operators are used to assign values to variables:
+// The basic structure of these operators include an = sign, usually with some sort of arithmetic operator infront of it
+// Ex. +=, -=, *=, /=, %=
+// += (a += 2) ==> same thing as writing a = a + 2
+// -= (a -= 3) ==> same thing as writing a = a - 3
+// *= (a *= 5) ==> same thing as writing a = a * 5
+// /= (a /= 1) ==> same thing as writing a = a / 1
+// These are just the most commonly used assignment operators, however there are many more
+
+// Examples: 
+int a = 5;
+cout << (a %= 3); //output is 2
+cout << (a += 7); //output is 12
+cout << (a /= 5); //output is 1

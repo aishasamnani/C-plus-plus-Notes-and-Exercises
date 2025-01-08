@@ -1,0 +1,141 @@
+// Boolean Operators
+
+// Recall that a boolean data type holds only two values: True (1) or False (0)
+// Boolean operators are essential when it comes to building logic and finding answer using a program.
+// Often used alongsisde comparison operators
+// While not always used, comparitive operators can be useful when writing complex boolean expressions. 
+// Below is a overview of the various comparitive operators:
+
+// Comparitive Operators
+// These operators are used to compare two values/variables with each other
+// The following operators all output a True (1) or False (0) boolean value:
+// == equal to (a == b)
+// != not equal to (a != b)
+// > greater than (a > b) 
+// < less than (a < b) 
+// >= greater than or equal to (a >= b)
+// <= less than or equal to (a <= b)
+
+// Examples without using conditional statements or boolean operators:
+int a = 3;
+int b = 6;
+cout << (a >= b); //outputs 0 (False)
+cout << (a != b); // outputs 1 (True)
+
+// Now that we have covered comparitive operators, we can use them when writing compound boolean expressions
+// A compound expression combines variables/values and operators
+// C++ will evaluate this expression when outputed
+// Below are the three logical boolean operators used in compound boolean expressions
+// && and (a > 0 && a < 5) - returns true if both are true
+// || or (a > 0 || a < 5) - returns true if only one is true
+// ! not !(a > 0 && a < 5) - returns false if result is true, vice versa
+
+// Heres an example of logical boolean operators used with comparitive operators: 
+int a = 5;
+cout << (a > 3 || a < 4); //returns 1 (true), a is greater than 3 but not less than 4, since it is an 'or' operator only one of these statments need to be true
+cout << !(a == 5); //returns 0 (false), a equals 5, but the not operator is used, so the opposite is true
+
+
+// Decisions (conditional statments)
+// The logical conditions that exist in C++ can be used alongside conditional statements to preform different actions and make decisions
+
+// If Satements:
+// if-statements are used to execute a block of code if and only if a specified condition is true.
+// The condition statement should be inside brackets on the same line following the if
+// For a code block to run when the condition is met, it should be inside the curly brackets that follow the statement
+// For example:
+
+#include <iostream> // This line is nessesary as it integrates the input-output stream library which allows input and output operations functionalities, like reading data from or writing data to the screen (console) or files.
+using namespace std;// Namespace is a way to group together related functions, classes, variables, and other symbols, so the "using" keyword allows you to access these symbols all at once without having to specify their namespace each time.
+// For example, later on in the code we use the keyword "cout" which stands for character output, and outputs the variable or data that follows it. If we didn't declare "using namespace std" at the beginning of the code, everytime we used "cout", we would need to write std:: infront of it. "Using namespace std" saves time by only needing to write it once. 
+
+int main() { 
+  int a = 16; 
+  int b = 3;
+  if (a > b) { // if the value of a is greater than the value of b
+    cout << "a is greater than b"; // output string
+  }  
+  return 0;
+}
+
+
+// Else Statements:
+// These conditional statements are used when the condtions for a block of code to be executed is false. 
+// else-statements are used after an if statement to execute some block of code in case the if condition is not true. 
+// For example:
+
+#include <iostream>
+using namespace std;
+
+int main() {
+  int month = 9;
+  if (month < 7) { // if the value of the variable month is less than 7
+    cout << "It's Summer";
+  } else { // if the value is not less than 7
+    cout << "It's Winter";
+  }
+  return 0;
+}
+// Will output 'It's Winter' since month has a value greater than 6
+
+
+// Else-if Statements:
+// else-if-statements work as a combination of the two conditional statements covered above. 
+// else-ifs are used to give a new condition to check if the condition before it is false
+// They are often used between if and else statements to execute a block of code under an alternate condition
+// Multiple else-if-statements can be used after an if-statement to run various blocks of code under different conditions
+// For example:
+
+#include <iostream>
+using namespace std;
+
+int main() {
+  int happiness = 15;
+  if (happiness < 10) { //program first checks for a value less than 10
+    cout << "Sad";
+  } else if (happiness < 20) { //if not less than 10, program checks for a value less than 20
+    cout << "Happy";
+  } else {
+    cout << "Excited"; //if not less than 20, program will execute this block of code
+  }
+  return 0;
+}
+// The above code will output "Happy" since the happiness variable holds a value between 10 and 20
+// Notice how the conditional statements are check in order of how they are written, which is why we checked for the smallest range first.  
+
+// We can also use boolean operators in our conditional statements to write more complex programs
+// For example, observe the grading program below:
+#include <iostream>
+using namespace std;
+
+int main() {
+  int grade = 95;
+  if (grade >= 0 && grade < 50) { //if grade is greater than or equal to 0 and less than 50
+    cout << "Fail";
+  } else if (grade >= 50 && grade < 75) { //if condition prior not true, if grade greater than or equal to 50 and less than 75
+    cout << "Pass";
+  } else if (grade >= 75 && grade <= 100) { //if condition prior not true, if grade greater than or equal to 75 and less than 100
+    cout << "Pass, Excellent!"; 
+  }
+  return 0;
+}
+
+// Nested If-Statements
+// To have a nested if statement just means to have if-statements inside of if-statements
+// Here's an example:
+#include <iostream>
+using namespace std;
+
+int main() {
+  int a = 6;
+  if ((a % 2) == 0) { // if a is divisble by 2
+      if ((a % 3) == 0) { // if a is also divisible by 3
+          cout << "a is divisible by 2 and 3";
+      } else { // if a is divisible by 2 but not by 3
+          cout << "a is divisble by 2, but not divisible by 3";
+      }
+  } else { // if a is not divisible by 2
+      cout << "a is not divisible by 2";
+  }
+  return 0;
+}

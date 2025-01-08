@@ -1,0 +1,346 @@
+// C++ Loops
+
+// Often times when coding you encounter a situation when you need to make programs 
+// Creating loops in a program can be useful when we need to need to repeat the same structure of code
+// Loops can be useful to save time writing code, reduce errors, and can be good for organizing code by making it more readable.
+// In C++ we have two types of loops: 'for' loops and 'while' loops
+
+// FOR LOOPS 
+// For loops are used when you know how many times you want to loop through a block of code.
+// here is the general structure of a for loop:
+for (initialization statement, condition, iterated statement)
+{
+    // code block
+    // what should be exectued
+}
+
+// In the above structure, there are three statements in the initial line of code within brackets:
+// initialization statement - this statement will be executed only at the beginning of the for loop, and this is where you can intialize variables that share the same type before the for loop begins.
+// condition - this statement is a condition that is checked before the current loop executes the code block. When you set a condition here, the loop will continue to run so long as the condition is true.
+// iterated statement - this statement is executed after the current loop runs through the code block. 
+
+// Example:
+// Lets say you want to print a phrase 5 times:
+
+// Without a for loop:
+#include <iostream>
+using namespace std;
+
+int main() {
+  cout << "Hello World\n"; // program manually prints phrase 5 times, each on a new line indicated by the '\n'
+  cout << "Hello World\n"; 
+  cout << "Hello World\n";
+  cout << "Hello World\n";
+  cout << "Hello World\n";
+}
+
+// With a for loop:
+#include <iostream>
+using namespace std;
+
+int main() {
+  for (int i = 0; i < 5; i++) { // intialization statement - 'i' is initializaed with the value of 0
+                                // condition - the condition 'i' is less than 5 must be True (1) for the loop to continue 
+                                // iterated statement - increase the value of 'i' by one after each loop is executed
+    cout << "Hello World\n"; // "Hello World is printed after the condition is checked each iteration
+  }
+}
+
+// The for-each loop
+// For-each loops are used when you want to loop through the characters/elements in a string or array.
+// Here is the general structure of a for-each loop:
+for (type variableName : arrayName) {
+  // code block to be executed
+}
+// Notice how there is no need for a condition or iterated statement as we are simply telling the program to loop through the string
+
+// Example:
+#include <iostream>
+using namespace std;
+     
+int main() {
+  string word = "yellow"; // initialize a string
+  for (char i : word) { // the variable 'i' is initialized as the character data type as we are going to loop through the string
+                        // think about it like this: each character in the string will be assineged to the variable i, one at a time
+    cout << i << "\n"; // every loop, 'i' is given the value of the character that is next in the given string, starting with the first character.
+                       // each letter in the string will be printed out on a new line
+  }      
+}
+// This example shows the application of the for-each loop in a string, however it is more commonly used for iterating through arrays (we have not learned this yet)
+
+// The 'break' statement
+// A break statement is used in a for-loop to end the loop and move on to the next portion of code after the for loop
+// It can be used with an if-statement to termintate the loop if a certain condition is met
+// For example:
+#include <iostream>
+using namespace std;
+
+int main() {
+  for (int i = 0; i < 10; i++) { // initialize 'i' as 0, 'i' should be less than 10 for loop to execute, 'i' is increased by one each loop
+    if (i == 5) { // if 'i' is equal to 5
+      break; // terminates loop once 'i' has reached the value of 5
+    }
+    cout << i << "\n"; // prints each number on a new line
+  } 
+}
+
+// The 'continue' statement
+// Unlike the break statment, when the continue statement is called, the loop will continue on the the next iteration and will not execute any code written after it. 
+// Also used when a condition has been met
+// For Example:
+// The following code counts to ten, but ignores all even numbers
+#include <iostream>
+using namespace std;
+
+int main() {
+  for (int i = 0; i < 10; i++) { // initialize 'i' as 0, 'i' should be less than 10 for loop to execute, 'i' is increased by one each loop
+    if ((i % 2) == 0) { // if the current value of 'i' is divisible by two 
+      continue; //skip to the next iteration and dont execute the rest of the code for this iteration
+    }
+    cout << i << "\n"; // print current value of 'i' each on a new line
+  } 
+}
+
+
+// WHILE LOOPS
+// A while loop will continue to loop through a block of code so long as a specified condition is met
+// Can be useful when we don't know the number of times we need to repeat a certain block of code. 
+// Here is the general structure of a while loop:
+while (condition) {
+  // code block to be executed
+}
+// Unlike a for loop, while loops need only a specified condition in order to execute 
+// This means the variables used in the while loop need to be intialized outside the loop before it happens
+// Example:
+// Lets say you want to count to 3:
+#include <iostream>
+using namespace std;
+
+int main() {
+  int i = 0; // initialize variable
+  while (i <= 3) { // if 'i' is less than or equal to 3 is true, the loop ill continue to run
+                   // this condition is checked at the beginning of each iteration of the while loop
+    cout << i << "\n"; // output the value of 'i' on a new line
+    i++; // increase the value of 'i' by one
+  }
+}
+// It is important to note that if you do not increment the value of 'i' in this case, the loop will run forever
+// When using while loops you must make sure that the condition will become False, causing the loop to stop.
+// If this doesn't happen, the while loop will continue forever
+
+
+// Do-While loop
+// This variant of the while loop always executes the code block once, then checks if the condition specified is true before looping through the rest of the iterations
+// The loop will always be executed at least once, regardless if the condition is False
+// Can be useful when we want to execute a block of code regardless of if the condition is True
+// Here is the general structure of a do-while loop:
+do {
+  // code block to be executed
+}
+while (condition);
+// Notice how no code is written after the while condition is stated
+// The block of code after the do statement is what is looped through if the condition is true
+// For Example:
+#include <iostream>
+using namespace std;
+
+int main() {
+  int i = 0; // initialize the 'i' variable
+  do { //executes the following code once
+    cout << i << "\n"; // outputs the value of 'i'
+    i++; // increments 'i' by one 
+  }
+  while (i <= 3); // condition is read after code is exceuted once
+                  // every iteration after this will check for these conditions before executing 
+                  // code block above is what will be looped through
+}
+
+
+// The 'break' statement for while loops works in the same way it does for for-loops. 
+// When a break statement is written, it jumps out of the loop, essentially stopping the loop entirely
+// Example:
+#include <iostream>
+using namespace std;
+
+int main() {
+  int i = 0; // initialize 'i' variable
+  while (i < 10) { // as long as 'i' is less than 10, the code block will exceute
+  	if (i == 5) { //if the variable 'i' is equal to 5
+      break; // loop will stop running here, and the rest of the code in this iteration will not exceute
+             // '4' will be the last number output
+    }
+    cout << i << "\n"; // outputs th current varible 'i' on a new line
+    i++; // increments 'i' by one
+  } 
+}
+
+
+// The 'continue' statement for while loops works in the same way it does for for-loops. 
+// When  continue statement is written, all code after the 'continue' within the code block will be skipped and the next iteration will excecute
+// Example:
+#include <iostream>
+using namespace std;
+
+int main() {
+  int i = 0; // initialize 'i'
+  while (i < 10) { // as long as 'i' is less than 10, the code block will loop through
+    i++; // increment 'i' by one
+  	if ((i % 3) == 0) { // if 'i' is divisible by three
+      continue; // code after this is ignored and the next iteration will start
+    }
+    cout << i << "\n"; // outputs the value of 'i' on a new line
+  } 
+}
+
+
+// NESTED LOOPS
+// Similar to nested ifs, a nested loop is a loop that contains a loop
+// You can have a loop inside a loop inside a loop...it goes on!
+// Example:
+
+// Nested for-loops:
+#include <iostream>
+using namespace std;
+
+int main() {
+  // Outer loop
+  int i = 1; // initialized 'i' for the outer while loop
+  while (i <= 2) {
+    cout << "Outer: " << i << "\n";  // Executes 2 times
+    ++i;
+    
+    // Inner loop
+    for (int j = 1; j <= 3; ++j) { // for loop inside while loop
+      cout << " Inner: " << j << "\n";  // Executes 6 times (2 * 3)
+    }
+  }
+}
+// With nested loops, for every iteration of the outer loop, the inner loop is executed fully.
+
+
+// C++ Functions
+
+// When writing large programs, you are bound to come across a situation when you need to reuse code
+// Functions are useful for saving time in these situations, as you only need to define the code once, and then you can use it as many times is needed
+// Functions are blocks of code that run only when it is called
+// We have already encountered a function in C++. This is the main() function.
+// C++ has predefined functions, including the main() function which is used to execute code
+// You can also create your own functions to preform actions:
+
+// Below is the general syntax and structure to follow when declaring your own function:
+void functionName() {
+    // code to be executed when function is called
+}
+// When declaring a function with no return value (we will learn about what this means later) you need to write 'void' before the name of the function
+
+// Calling a function
+// When you declare a function, you must do so outside of the main function
+// The function should declared before the main function is executed or you will get an error
+// Declaring a function does not execute the code inside of it, but it rather saves the code for later use
+// To call a function and actually execute the code, it needs to be called inside of the main function
+// You can call a function as many times as you want
+// Heres is an example:
+
+#include <iostream>
+using namespace std;
+
+void scentence() { // Creates a function called 'scentence'
+  cout << "Hello, my name is Bob!"; // when the function is called, this line will be executed
+}
+
+int main() {
+  scentence(); // calls the function, this is when the code inside the function is executed
+               // outputs: "Hello, my name is Bob!"
+}
+
+
+// Parameters/Arguments
+// We can pass information into functions as parameters
+// Parameters essentially act as variables inside of a function
+// They are specified after the function name, within round brackets
+// You can have multiple parameters, each seperated by a comma
+// These parameter names act as variables only within the function, and need to be replaced with data/information when the function is called (information passed into the function are called parameters)
+// NOTE: The main() function in C++ is a built-in function, so we dont need to call it, it is automatically executed when the program runs
+// For example:
+// The following function organizes the information of family members by adding their last name
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+void family(string fname, int age) { // function called family with the parameters fname and age
+  cout << fname << " Smith, Age: " << age << "\n"; // outputs this line when code is executed and arguments are passed through 
+}
+
+int main() {
+  // Family members first name and age are passed through as arguments
+  // NOTE: The function call should have the same number of arguments as there are parameters and should be in the same order for the function to be executed as intended
+  family("Bob", 10); 
+  family("Emma", 13);
+  family("John", 17);
+}
+
+// Output:
+// Bob Smith, Age: 10
+// Emma Smith, Age: 13
+// John Smith, Age: 17
+
+// Default Parameters:
+// You can also set a default parameter value, in case an argument is not passed through the function:
+#include <iostream>
+#include <string>
+using namespace std;
+
+void family(string fname = "Michael", int age = 25) { // the default parameter value are set for both parameters using the '=' sign
+  cout << fname << " Smith, Age: " << age << "\n"; // outputs this line when code is executed and arguments are passed through 
+}
+
+int main() {
+  // Family members first name and age are passed through as arguments:
+  family("Bob", 10); 
+  family("Emma", 13);
+  family(); // function called without any arguments
+  family("John", 17);
+}
+
+// Output:
+// Bob Smith, Age: 10
+// Emma Smith, Age: 13
+// Michael Smith, Age: 25
+// John Smith, Age: 17
+
+
+// Return Values:
+// The void keyword used before the function declaration represents the retun type of the function
+// The above examples did not return a valkue, therefore the return type 'void' was used
+// If you want to return a value, the function should specify the corrct type that is being returned (int, string, etc..)
+// To return a value, use the return keyword inside of the function
+// Example:
+
+#include <iostream>
+using namespace std;
+
+int triple(int a) { // the function 'triple' is declared using the 'int' return value
+  return 3 * a; // the function will return and integer value nultiplied by three, therefore the value returned would be an 'int' return type
+}
+
+int main() {
+  cout << triple(5); // argument '5' passed through function as an argument
+                     // notice how we need to print the function call, this is because we only returned a value in our 'triple' function, so nothing will output in the console if call the function itself
+                     // since the function returns the value 15, that value is what is printed
+}
+
+// Up until now, whenever we write the main() function, we write a return type of int infront of it
+// This is correct, however there doesnt seem to be any sort of return line within the main function
+// This is because so far we have not been including an important line in our code which is the return 0 line
+// Returning 0 in the main function in C++ means that the program executed successfully.
+// If you are curious about the other use-cases of return values in the main function in C++, visit this website: https://www.geeksforgeeks.org/return-0-vs-return-1-in-c/
+// From now on, it is better practice to write return 0 at the end of all our C++ programs like this:
+
+#include <iostream>
+using namespace std;
+
+int main() {
+  cout << "This is better";
+  return 0;
+}
